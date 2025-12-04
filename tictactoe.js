@@ -1,7 +1,11 @@
-const gameBoard {
+function gameBoard() {
 
 }
 
-const player {
+function player() {
+    
+}
+
+function gameState() {
     
 }

@@ -1,9 +1,11 @@
 function gameBoard() {
-
+    let board = ['', '', '', '', '', '', '', '', ''];
+    
 }
 
-function player() {
+function player(name) {
     
+    const name = name;
 }
 
 function gameState() {

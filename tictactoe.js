@@ -11,6 +11,8 @@ function GameBoard() {
         }
     }
 
+    const getBoard = () => board;
+
     const printBoard = () => {
         console.log("=BOARD=");
         console.log(`[${board[0][0].getValue()}] [${board[0][1].getValue()}] [${board[0][2].getValue()}]`);
@@ -19,8 +21,6 @@ function GameBoard() {
         console.log("-----------");
         console.log(`[${board[2][0].getValue()}] [${board[2][1].getValue()}] [${board[2][2].getValue()}]`);
     };
-
-    const getBoard = () => board();
 
     return { getBoard, printBoard };
     
@@ -46,8 +46,42 @@ function Player(shape) {
 }
 
 function GameState() {
-    
+
+    const board = GameBoard();
+    /*const players = [
+        {
+            playerName: playerOne,
+            shape: "X"
+        },
+        {
+            playerName: playerTwo,
+            shape: "X"
+        }
+    ]
+   
+    const currentPlayer = players[0];
+
+    const alternatePlayers = () => {
+        currentPlayer = currentPlayer === players[0] ? players[1] : players[0];}
+
+    const getCurrentPlayer = () => currentPlayer;
+
+    const printTurn = () => {
+        board.printBoard();
+    };
+     */
+    const playTurn = (position, playerShape) => {
+        const row = Math.floor(position / 3);
+        const column = postion % 3;
+
+        board.getBoard()[row][column].addToken(playerShape);
+        board.printBoard();
+    };
+
+    return { playTurn }
+
 }
 
-const game = GameBoard();
-game.printBoard();
+game = GameState();
+game.playTurn(0, "X");
+

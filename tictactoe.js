@@ -69,19 +69,18 @@ function GameState() {
     const printTurn = () => {
         board.printBoard();
     };
-     */
+    */
     const playTurn = (position, playerShape) => {
         const row = Math.floor(position / 3);
-        const column = postion % 3;
+        const column = position % 3;
 
         board.getBoard()[row][column].addToken(playerShape);
         board.printBoard();
     };
-
+    
     return { playTurn }
 
 }
 
 game = GameState();
 game.playTurn(0, "X");
-

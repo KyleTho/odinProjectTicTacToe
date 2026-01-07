@@ -45,16 +45,17 @@ function Player(shape) {
     const playerShape = shape;
 }
 
-function GameState() {
+function GameState(playerOneName = "Player One",
+  playerTwoName = "Player Two") {
 
     const board = GameBoard();
-    /*const players = [
+    const players = [
         {
-            playerName: playerOne,
+            playerName: playerOneName,
             shape: "X"
         },
         {
-            playerName: playerTwo,
+            playerName: playerTwoName,
             shape: "X"
         }
     ]
@@ -69,7 +70,7 @@ function GameState() {
     const printTurn = () => {
         board.printBoard();
     };
-    */
+    
     const playTurn = (position, playerShape) => {
         const row = Math.floor(position / 3);
         const column = position % 3;
@@ -83,4 +84,5 @@ function GameState() {
 }
 
 game = GameState();
+game.playTurn(0, "X");
 game.playTurn(0, "X");

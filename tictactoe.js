@@ -14,8 +14,14 @@ function GameBoard() {
     const getBoard = () => board;
 
     const placeShape = (playerShape, position) => {
-        const availableCells = board.filter((row) => row[column])
-        board.getBoard()[row][column].addToken(playerShape);
+        const row = Math.floor(position / 3);
+        const column = position % 3;
+        
+        if (board[row][column] !== 0) {
+            return;
+        }
+
+        board[row][column].addToken(playerShape);
 
     };
 

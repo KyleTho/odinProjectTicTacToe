@@ -13,6 +13,12 @@ function GameBoard() {
 
     const getBoard = () => board;
 
+    const placeShape = (playerShape, position) => {
+        const availableCells = board.filter((row) => row[column])
+        board.getBoard()[row][column].addToken(playerShape);
+
+    };
+
     const printBoard = () => {
         console.log("=BOARD=");
         console.log(`[${board[0][0].getValue()}] [${board[0][1].getValue()}] [${board[0][2].getValue()}]`);
@@ -75,7 +81,6 @@ function GameState(playerOneName = "Player One",
         const row = Math.floor(position / 3);
         const column = position % 3;
 
-        board.getBoard()[row][column].addToken(playerShape);
         board.printBoard();
     };
     

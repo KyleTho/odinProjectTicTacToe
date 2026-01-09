@@ -13,16 +13,16 @@ function GameBoard() {
 
     const getBoard = () => board;
 
-    const placeShape = (playerShape, position) => {
+    const placeShape = (position, playerShape) => {
         const row = Math.floor(position / 3);
         const column = position % 3;
         
-        if (board[row][column] !== 0) {
-            return;
+        if (board[row][column].getValue() !== " ") {
+            return false;
         }
 
         board[row][column].addToken(playerShape);
-
+        return true;
     };
 
     const printBoard = () => {
@@ -34,7 +34,7 @@ function GameBoard() {
         console.log(`[${board[2][0].getValue()}] [${board[2][1].getValue()}] [${board[2][2].getValue()}]`);
     };
 
-    return { getBoard, printBoard };
+    return { getBoard, printBoard, placeShape };
     
 }
 
@@ -68,11 +68,11 @@ function GameState(playerOneName = "Player One",
         },
         {
             playerName: playerTwoName,
-            shape: "X"
+            shape: "O"
         }
     ]
    
-    const currentPlayer = players[0];
+    let currentPlayer = players[0];
 
     const alternatePlayers = () => {
         currentPlayer = currentPlayer === players[0] ? players[1] : players[0];}
@@ -84,8 +84,8 @@ function GameState(playerOneName = "Player One",
     };
     
     const playTurn = (position, playerShape) => {
-        const row = Math.floor(position / 3);
-        const column = position % 3;
+
+        board.placeShape(position, playerShape);
 
         board.printBoard();
     };
@@ -95,5 +95,4 @@ function GameState(playerOneName = "Player One",
 }
 
 game = GameState();
-game.playTurn(0, "X");
 game.playTurn(0, "X");
